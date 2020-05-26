@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="en-au"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="secret management, terraform, vault" />
+<meta property="og:site_name" content="tdonovic" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://www.tdonovic.github.io/post/secret-management-terraform-vault/" />
+<meta property="og:locale" content="en-au" />
+<meta property="article:published_time" content="2020-05-26
+" /> <meta property="article:modified_time" content="2020-05-26
+" />
+
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@siegerts" />
+<meta name="twitter:creator" content="@siegerts" />
+<meta
+  name="twitter:title"
+  content="secret management, terraform, vault | tdonovic"
+/>
+<meta
+  name="twitter:description"
+  content="Storing secrets in git is bad. Github even has [automated secret scanning)[https://help.github.com/en/github/administering-a-repository/about-secret-scanning] to try and combat this. The worst bit is having years of security debt, like secrets in git, and needing to put them somewhere more secure. This post details some of the trials we have gone through to fix this issue, as well as our approach and why we think it was a good way to go.
+#iac infrastructure as code is the standard way to deploy infrastructure, since it&rsquo;s repeatable, clean, and can be source controlled.|"
+/>
+<meta name="twitter:image:src" content="" />
+<meta name="twitter:domain" content="https://www.tdonovic.github.io/post/secret-management-terraform-vault/" />
+
+
+
+    <title>secret management, terraform, vault</title>
+    <link rel="canonical" href="https://www.tdonovic.github.io/post/secret-management-terraform-vault/" />
+
+
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/tachyons@4.11.1/css/tachyons.min.css"
+/>
+
+<link rel="stylesheet" href="https://www.tdonovic.github.io/css/style.css" />
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/highlightjs@9.12.0/styles/github-gist.css"
+/>
+
+
+<script type="application/javascript">
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	if (window.sessionStorage) {
+		var GA_SESSION_STORAGE_KEY = 'ga:clientId';
+		ga('create', 'UA-XXXXXXXXX-X', {
+	    'storage': 'none',
+	    'clientId': sessionStorage.getItem(GA_SESSION_STORAGE_KEY)
+	   });
+	   ga(function(tracker) {
+	    sessionStorage.setItem(GA_SESSION_STORAGE_KEY, tracker.get('clientId'));
+	   });
+   }
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+
+<body
+  lang="en-au"
+  class="sans-serif w-90 w-80-m w-60-ns center mv2 mv5-ns"
+  itemscope
+  itemtype="http://schema.org/Article"
+>
+  
+  <span class="b">/ </span>
+  <a href="https://www.tdonovic.github.io/" class="b bb bw1 pb1 no-underline black">tdonovic</a>
+  <span class="b"> / </span>
+  <a href="/post" class="b bb bw1 pb1 no-underline black">blog</a>
+
+  <section id="main" class="mt5">
+    <h1 itemprop="name" id="title">secret management, terraform, vault</h1>
+    <span class="f6 gray">May 26, 2020</span>
+
+      <article itemprop="articleBody" id="content" class="w-90 lh-copy">
+        <p>Storing secrets in git is bad. Github even has [automated secret
+scanning)[https://help.github.com/en/github/administering-a-repository/about-secret-scanning]
+to try and combat this. The worst bit is having years of security debt,
+like secrets in git, and needing to put them somewhere more secure. This
+post details some of the trials we have gone through to fix this issue,
+as well as our approach and why we think it was a good way to go.</p>
+<p>#iac
+<code>infrastructure as code</code> is the standard way to deploy infrastructure,
+since it&rsquo;s repeatable, clean, and can be source controlled. There are a
+few tools to do this with, but I would argue the defacto standard for
+this is to use Hashicorp&rsquo;s mostly excellent
+<a href="https://terraform.io">terraform</a>. Unfortunately, sometimes this means
+that people can (inadvertently?) put secrets into the same repo as the
+infrastructure. This is a security problem, but it&rsquo;s a big issue for
+opening up control of infrastructure to the rest of an org: the thinking
+going, we can&rsquo;t give access to our infra repos to devs if there are
+secrets in there. If we can let devs into that repo, they can work on
+the infrastructure too, meaning we have less to worry about and can
+focus on more important things 🤔. Let&rsquo;s do that, that sounds like a
+good use of my time.</p>
+<p>#removing secrets, aka. down the <code>vault</code> rabbit hole
+Again, thanks Hashicorp, the defacto standard way to store secrets when
+you have any volume of them, and want to be cross platform is to use
+<a href="https://www.vaultproject.io/">vault</a>. Even better, <code>terraform</code> has a
+<code>vault</code> provider, so <em>they just work</em><!-- raw HTML omitted -->it never does, right?<!-- raw HTML omitted -->.</p>
+<p>Setting up vault in a secure, HA, good way is a challenge in and of
+itself, and a a separate blogpost 😉</p>
+<p>Once <code>vault</code> is set up, the first thought is, now I need some access
+controlled way to auth to it, so that I&rsquo;m not using the root token in my
+<code>terraform</code>, which I would argue is worse than leaving the secrets in
+the repo to start.</p>
+<p>But this is confusing, since everyone I talked to said you need to use
+the root token, because <code>terraform</code> does unnatural things with it, like
+generatign a child token with it. It&rsquo;s scary when you start looking,
+start seeing github issues with titles like <a href="https://github.com/terraform-providers/terraform-provider-vault/issues/368">&ldquo;Cannot craete child token
+without root
+privileges&rdquo;</a>
+or <a href="https://github.com/hashicorp/terraform/issues/16457">&ldquo;provider is unable to access data without a non-root
+token&rdquo;</a>. Time to
+get reading and find some solution then.</p>
+<p>#a child, non-root, token. for your health
+So, a child token. At first inspection, yes, you can absolutely do
+this. Just need to proivide the following policy to that entity:
+path &ldquo;auth/token/create&rdquo; {
+capabilities = [&ldquo;create&rdquo;, &ldquo;update&rdquo;]
+}
+But does that mean that the new, child, token, will be able to do
+whatever it wants? No, <code>vault</code> has a nice inheritance model, so it won&rsquo;t
+give child tokens more permission than their parents.</p>
+<h3 id="side-note-why-does-tf-force-us-to-do-it-this-way">side note; why does tf force us to do it this way</h3>
+<p>Warning: the tfstate is caching the results, access to vault is only made once.
+Terraform caches that token in its statefile. If it uses the actual
+token, we have an issue. But with a temp token, we can store it and it&rsquo;s
+useless. A nice workaround for a problem that should arguably not be
+there.</p>
+<p>Nice, but how do we actually give access to this token in the first
+place? Great, it&rsquo;s not root, but we still need to store it somewhere</p>
+<p>#github auth, sso magic, token helper
+To do anything in <code>vault</code>, you need to auth. This can be done by <code>vault login</code>, which, irrespective of the auth method, returns a token that is
+actually used to do <em>stuff</em> in <code>vault</code>.
+Great, so what?
+Lets just use this token instead of some static token for our
+<code>terraform</code>. Even better, <code>vault</code> stores it in its token helper,
+which terraform can also use. Lets go one step futher, and use github as our auth method
+for logging in, rather than with some generic iam role. Great, now we
+have audit on who got access to <code>vault</code> and made a bunch of changes.</p>
+<p>#now what
+Now lets see if I can get all that working</p>
+
+      </article>
+
+      
+      <span class="f6 gray mv3" title="Lastmod: May 26, 2020. Published at: 2020-05-26.">
+        
+      </span>
+
+      
+        <section class="mt4">
+          
+          
+          <h3>👋 Related posts in the <a href="/series/secret-mangement" class="b bb bw1 pb1 no-underline black">secret mangement</a> series...</h3>
+      
+          
+         
+          
+            <div class="ph2 i">
+              No follow up posts yet. Check back soon!
+            </div>    
+          
+        </section>
+      
+
+  </section>
+
+  <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        © 2020 Tomas Donovic
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>

@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on tdonovic</title>
-    <link>https://www.tdonovic.github.io/post/</link>
-    <description>Recent content in Posts on tdonovic</description>
+    <title>secret mangement on tdonovic</title>
+    <link>https://www.tdonovic.github.io/series/secret-mangement/</link>
+    <description>Recent content in secret mangement on tdonovic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-au</language>
     <copyright>© 2020 Tomas Donovic</copyright>
     <lastBuildDate>Tue, 26 May 2020 00:00:00 +1000</lastBuildDate>
     
-	<atom:link href="https://www.tdonovic.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.tdonovic.github.io/series/secret-mangement/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>painless &amp; safe auto DB lifecycle</title>
-      <link>https://www.tdonovic.github.io/post/painless-safe-auto-db-lifecycle/</link>
-      <pubDate>Tue, 26 May 2020 00:00:00 +1000</pubDate>
-      
-      <guid>https://www.tdonovic.github.io/post/painless-safe-auto-db-lifecycle/</guid>
-      <description>DevOps engineer is a bit of a misnomer. Really, it should be broken into two main functions: platform engineering and platform automation. Platform engineering being &amp;ldquo;get k8s running so they can deploy their workload&amp;rdquo;, and platform automation being &amp;ldquo;magic up a way we don&amp;rsquo;t need to manually provision environments any more&amp;rdquo;.
-This post definitely fits firmly into the second one. In a lot of cases, developers have access to modify AWS, to the build system, create repos.</description>
-    </item>
     
     <item>
       <title>secret management, terraform, vault</title>
