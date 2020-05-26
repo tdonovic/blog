@@ -44,7 +44,7 @@
 <meta
   name="twitter:description"
   content="Storing secrets in git is bad. Github even has [automated secret scanning)[https://help.github.com/en/github/administering-a-repository/about-secret-scanning] to try and combat this. The worst bit is having years of security debt, like secrets in git, and needing to put them somewhere more secure. This post details some of the trials we have gone through to fix this issue, as well as our approach and why we think it was a good way to go.
-#iac infrastructure as code is the standard way to deploy infrastructure, since it&rsquo;s repeatable, clean, and can be source controlled.|"
+iac infrastructure as code is the standard way to deploy infrastructure, since it&rsquo;s repeatable, clean, and can be source controlled.|"
 />
 <meta name="twitter:image:src" content="" />
 <meta name="twitter:domain" content="https://tdonovic.github.io/post/secret-management-terraform-vault/" />
@@ -118,8 +118,8 @@ to try and combat this. The worst bit is having years of security debt,
 like secrets in git, and needing to put them somewhere more secure. This
 post details some of the trials we have gone through to fix this issue,
 as well as our approach and why we think it was a good way to go.</p>
-<p>#iac
-<code>infrastructure as code</code> is the standard way to deploy infrastructure,
+<h1 id="iac">iac</h1>
+<p><code>infrastructure as code</code> is the standard way to deploy infrastructure,
 since it&rsquo;s repeatable, clean, and can be source controlled. There are a
 few tools to do this with, but I would argue the defacto standard for
 this is to use Hashicorp&rsquo;s mostly excellent
@@ -132,8 +132,8 @@ secrets in there. If we can let devs into that repo, they can work on
 the infrastructure too, meaning we have less to worry about and can
 focus on more important things 🤔. Let&rsquo;s do that, that sounds like a
 good use of my time.</p>
-<p>#removing secrets, aka. down the <code>vault</code> rabbit hole
-Again, thanks Hashicorp, the defacto standard way to store secrets when
+<h1 id="removing-secrets-aka-down-the-vault-rabbit-hole">removing secrets, aka. down the <code>vault</code> rabbit hole</h1>
+<p>Again, thanks Hashicorp, the defacto standard way to store secrets when
 you have any volume of them, and want to be cross platform is to use
 <a href="https://www.vaultproject.io/">vault</a>. Even better, <code>terraform</code> has a
 <code>vault</code> provider, so <em>they just work</em><!-- raw HTML omitted -->it never does, right?<!-- raw HTML omitted -->.</p>
@@ -152,8 +152,8 @@ privileges&rdquo;</a>
 or <a href="https://github.com/hashicorp/terraform/issues/16457">&ldquo;provider is unable to access data without a non-root
 token&rdquo;</a>. Time to
 get reading and find some solution then.</p>
-<p>#a child, non-root, token. for your health
-So, a child token. At first inspection, yes, you can absolutely do
+<h1 id="a-child-non-root-token-for-your-health">a child, non-root, token. for your health</h1>
+<p>So, a child token. At first inspection, yes, you can absolutely do
 this. Just need to proivide the following policy to that entity:
 path &ldquo;auth/token/create&rdquo; {
 capabilities = [&ldquo;create&rdquo;, &ldquo;update&rdquo;]
@@ -169,8 +169,8 @@ useless. A nice workaround for a problem that should arguably not be
 there.</p>
 <p>Nice, but how do we actually give access to this token in the first
 place? Great, it&rsquo;s not root, but we still need to store it somewhere</p>
-<p>#github auth, sso magic, token helper
-To do anything in <code>vault</code>, you need to auth. This can be done by <code>vault login</code>, which, irrespective of the auth method, returns a token that is
+<h1 id="github-auth-sso-magic-token-helper">github auth, sso magic, token helper</h1>
+<p>To do anything in <code>vault</code>, you need to auth. This can be done by <code>vault login</code>, which, irrespective of the auth method, returns a token that is
 actually used to do <em>stuff</em> in <code>vault</code>.
 Great, so what?
 Lets just use this token instead of some static token for our
@@ -178,8 +178,8 @@ Lets just use this token instead of some static token for our
 which terraform can also use. Lets go one step futher, and use github as our auth method
 for logging in, rather than with some generic iam role. Great, now we
 have audit on who got access to <code>vault</code> and made a bunch of changes.</p>
-<p>#now what
-Now lets see if I can get all that working</p>
+<h1 id="now-what">now what</h1>
+<p>Now lets see if I can get all that working</p>
 
       </article>
 
