@@ -4,8 +4,8 @@ theme ="hugo-theme-basic"
 languageCode = "en-au"
 googleAnalytics = "UA-XXXXXXXXX-X"
 enableEmoji = true 
-copyright = "© 2020 Tomas Donovic"
-description = "My personal blog!"
+copyright = "© 2020 tomas donovic"
+description = "discoveries along the way"
 
 [taxonomies]
   category = "categories"
