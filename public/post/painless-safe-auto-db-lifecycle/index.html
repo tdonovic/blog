@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="en-au"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="painless &amp; safe auto DB lifecycle" />
+<meta property="og:site_name" content="tdonovic" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://www.tdonovic.github.io/post/painless-safe-auto-db-lifecycle/" />
+<meta property="og:locale" content="en-au" />
+<meta property="article:published_time" content="2020-05-26
+" /> <meta property="article:modified_time" content="2020-05-26
+" />
+
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@siegerts" />
+<meta name="twitter:creator" content="@siegerts" />
+<meta
+  name="twitter:title"
+  content="painless &amp; safe auto DB lifecycle | tdonovic"
+/>
+<meta
+  name="twitter:description"
+  content="DevOps engineer is a bit of a misnomer. Really, it should be broken into two main functions: platform engineering and platform automation. Platform engineering being &ldquo;get k8s running so they can deploy their workload&rdquo;, and platform automation being &ldquo;magic up a way we don&rsquo;t need to manually provision environments any more&rdquo;.
+This post definitely fits firmly into the second one. In a lot of cases, developers have access to modify AWS, to the build system, create repos.|"
+/>
+<meta name="twitter:image:src" content="" />
+<meta name="twitter:domain" content="https://www.tdonovic.github.io/post/painless-safe-auto-db-lifecycle/" />
+
+
+
+    <title>painless &amp; safe auto DB lifecycle</title>
+    <link rel="canonical" href="https://www.tdonovic.github.io/post/painless-safe-auto-db-lifecycle/" />
+
+
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/tachyons@4.11.1/css/tachyons.min.css"
+/>
+
+<link rel="stylesheet" href="https://www.tdonovic.github.io/css/style.css" />
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/highlightjs@9.12.0/styles/github-gist.css"
+/>
+
+
+<script type="application/javascript">
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	if (window.sessionStorage) {
+		var GA_SESSION_STORAGE_KEY = 'ga:clientId';
+		ga('create', 'UA-XXXXXXXXX-X', {
+	    'storage': 'none',
+	    'clientId': sessionStorage.getItem(GA_SESSION_STORAGE_KEY)
+	   });
+	   ga(function(tracker) {
+	    sessionStorage.setItem(GA_SESSION_STORAGE_KEY, tracker.get('clientId'));
+	   });
+   }
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+
+<body
+  lang="en-au"
+  class="sans-serif w-90 w-80-m w-60-ns center mv2 mv5-ns"
+  itemscope
+  itemtype="http://schema.org/Article"
+>
+  
+  <span class="b">/ </span>
+  <a href="https://www.tdonovic.github.io/" class="b bb bw1 pb1 no-underline black">tdonovic</a>
+  <span class="b"> / </span>
+  <a href="/post" class="b bb bw1 pb1 no-underline black">blog</a>
+
+  <section id="main" class="mt5">
+    <h1 itemprop="name" id="title">painless &amp; safe auto DB lifecycle</h1>
+    <span class="f6 gray">May 26, 2020</span>
+
+      <article itemprop="articleBody" id="content" class="w-90 lh-copy">
+        <p>DevOps engineer is a bit of a misnomer. Really, it should be broken into
+two main functions: platform engineering and platform automation.
+Platform engineering being &ldquo;get k8s running so they can deploy their
+workload&rdquo;, and platform automation being &ldquo;magic up a way we don&rsquo;t need
+to manually provision environments any more&rdquo;.</p>
+<p>This post definitely fits firmly into the second one. In a lot of cases,
+developers have access to modify AWS, to the build system, create repos.
+In our case, and maybe more broadly, there isn&rsquo;t an obious, automated,
+RBAC&rsquo;ed way to create and destroy DBs, especially for ephemeral
+environments.</p>
+<p>Moreover, automation, one of the 5 tenets of Atlassian&rsquo;s
+<a href="https://www.atlassian.com/devops#culture">CALM</a> DevOps framework, and
+it&rsquo;s maybe the easier to get through without a lot of organisational
+support. Something along the lines of if we can effect change without rocking too many boats, we can be a swift and effective tide, to rise all boats.</p>
+<h1 id="the-problem">the problem</h1>
+<p>In our team, only DevOps can create new DBs, be it prod or nonprod.
+Detailed internally, it&rsquo;s a 13 step process, where the last one is
+<code>cry</code>. This is frankly too much overhead, it&rsquo;s slow, and no one wants to
+do it.</p>
+<h1 id="what-do-we-do">what do we do?</h1>
+<p><code>vault</code> to the rescue. Hashicorp Vault (vault) is a distributed secret management system, rather than a specific database provisioning tool. Moreover, <code>vault</code> is increasingly becoming  <em>the</em> place to manage secrets centrally. However, it has a much larger featureset than just storing text secrets. Vault carries forward the ideas of different operators, that can control access to all sorts of different services, whether that be MySQL, or a CA.</p>
+<p>Broadly, an application auths with vault via iam credentials, or a service account (when using k8s auth method), or some static token. Once authed, the entity can access some resources as defined by policy.</p>
+<h2 id="so-how-does-this-actually-work-then">so how does this actually work then?</h2>
+<p><img src="diag.png" alt="flow diagram">
+In this case, when an init container for some service starts, we connect to Vault, and retrieve our MySQL credentials. Then, the init container will create an empty database with the service name, create new, lower powered credentials (that don’t allow creation/deletion of DBs) and dump the credentials the actual service should run with into the environment of the service.</p>
+<p>If the database already exists, the service will simply pass the low strength credentials through to the service starting.</p>
+<h2 id="does-it-get-even-better">does it get even better?</h2>
+<p>It certainly does!
+Since we have an init container doing the heavy lifting for actually provisioning  the database, we can do some extra things. For example, another feature that is barely discussed, but would be much appreciated is automated database restoration, ie. taking a snapshot from some other environment and restoring to this new one.
+By just including a bkp identifier to their helm chart, a dev can have a
+backup restored on the first start of their system. Great, now the
+environment is even more ephemeral. All can be recreated and blown away
+at will.</p>
+<p>Database cleanup, for no longer needed, old, cruddy, useless databases would need to be added. We could implement on a post-delete helm hook, that the database for that service is deleted. This would need to be used really carefully to make sure that production data was not deleted. Perhaps backing the db up before deletion would be enough?</p>
+<h1 id="the-end">the end?</h1>
+<p><code>vault</code> is a super cool way to go to solve this problem, along with
+<code>init</code> and <code>delete</code> hooks in <code>helm</code>. The next installment of this series
+will be some more implementation details about how we went!</p>
+
+      </article>
+
+      
+      <span class="f6 gray mv3" title="Lastmod: May 26, 2020. Published at: 2020-05-26.">
+        
+      </span>
+
+      
+        <section class="mt4">
+          
+          
+          <h3>👋 Related posts in the <a href="/series/platform-automation" class="b bb bw1 pb1 no-underline black">platform automation</a> series...</h3>
+      
+          
+         
+          
+            <div class="ph2 i">
+              No follow up posts yet. Check back soon!
+            </div>    
+          
+        </section>
+      
+
+  </section>
+
+  <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        © 2020 Tomas Donovic
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>
