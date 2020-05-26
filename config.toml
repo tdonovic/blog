@@ -1,4 +1,4 @@
-baseURL = "https://www.tdonovic.github.io/"
+baseURL = "https://tdonovic.github.io/"
 title = "tdonovic"
 theme ="hugo-theme-basic"
 languageCode = "en-au"

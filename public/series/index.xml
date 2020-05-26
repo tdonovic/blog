@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Series on tdonovic</title>
-    <link>https://www.tdonovic.github.io/series/</link>
+    <link>https://tdonovic.github.io/series/</link>
     <description>Recent content in Series on tdonovic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-au</language>
     <copyright>© 2020 tomas donovic</copyright>
     <lastBuildDate>Tue, 26 May 2020 00:00:00 +1000</lastBuildDate>
     
-	<atom:link href="https://www.tdonovic.github.io/series/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tdonovic.github.io/series/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>platform automation</title>
-      <link>https://www.tdonovic.github.io/series/platform-automation/</link>
+      <link>https://tdonovic.github.io/series/platform-automation/</link>
       <pubDate>Tue, 26 May 2020 00:00:00 +1000</pubDate>
       
-      <guid>https://www.tdonovic.github.io/series/platform-automation/</guid>
+      <guid>https://tdonovic.github.io/series/platform-automation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>secret mangement</title>
-      <link>https://www.tdonovic.github.io/series/secret-mangement/</link>
+      <link>https://tdonovic.github.io/series/secret-mangement/</link>
       <pubDate>Tue, 26 May 2020 00:00:00 +1000</pubDate>
       
-      <guid>https://www.tdonovic.github.io/series/secret-mangement/</guid>
+      <guid>https://tdonovic.github.io/series/secret-mangement/</guid>
       <description></description>
     </item>
     
