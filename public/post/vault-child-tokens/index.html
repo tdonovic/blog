@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="en-au"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="vault child tokens" />
+<meta property="og:site_name" content="tdonovic" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="https://tdonovic.github.io/post/vault-child-tokens/" />
+<meta property="og:locale" content="en-au" />
+<meta property="article:published_time" content="2020-06-01
+" /> <meta property="article:modified_time" content="2020-06-01
+" />
+
+
+
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@siegerts" />
+<meta name="twitter:creator" content="@siegerts" />
+<meta
+  name="twitter:title"
+  content="vault child tokens | tdonovic"
+/>
+<meta
+  name="twitter:description"
+  content="To continue from last time: we need to create some vault policy to allow terraform to create child tokens. Thanks to (tyrannosauraus-becks )[https://github.com/tyrannosaurus-becks], who suggests to add this policy to the github users that we have previously created:
+path &ldquo;auth/token/create&rdquo; { capabilities = [&ldquo;create&rdquo;, &ldquo;read&rdquo;, &ldquo;update&rdquo;, &ldquo;delete&rdquo;, &ldquo;list&rdquo;] }
+Huh, look at that, it worked. It&rsquo;s nice when things work the first time! Now to rid our repos of secrets!|"
+/>
+<meta name="twitter:image:src" content="" />
+<meta name="twitter:domain" content="https://tdonovic.github.io/post/vault-child-tokens/" />
+
+
+
+    <title>vault child tokens</title>
+    <link rel="canonical" href="https://tdonovic.github.io/post/vault-child-tokens/" />
+
+
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/tachyons@4.11.1/css/tachyons.min.css"
+/>
+
+<link rel="stylesheet" href="https://tdonovic.github.io/css/style.css" />
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/highlightjs@9.12.0/styles/github-gist.css"
+/>
+
+
+<script type="application/javascript">
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	if (window.sessionStorage) {
+		var GA_SESSION_STORAGE_KEY = 'ga:clientId';
+		ga('create', 'UA-XXXXXXXXX-X', {
+	    'storage': 'none',
+	    'clientId': sessionStorage.getItem(GA_SESSION_STORAGE_KEY)
+	   });
+	   ga(function(tracker) {
+	    sessionStorage.setItem(GA_SESSION_STORAGE_KEY, tracker.get('clientId'));
+	   });
+   }
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+
+<body
+  lang="en-au"
+  class="sans-serif w-90 w-80-m w-60-ns center mv2 mv5-ns"
+  itemscope
+  itemtype="http://schema.org/Article"
+>
+  
+  <span class="b">/ </span>
+  <a href="https://tdonovic.github.io/" class="b bb bw1 pb1 no-underline black">tdonovic</a>
+  <span class="b"> / </span>
+  <a href="/post" class="b bb bw1 pb1 no-underline black">blog</a>
+
+  <section id="main" class="mt5">
+    <h1 itemprop="name" id="title">vault child tokens</h1>
+    <span class="f6 gray">June 1, 2020</span>
+
+      <article itemprop="articleBody" id="content" class="w-90 lh-copy">
+        <p>To continue from last time: we need to create some vault policy to allow
+terraform to create child tokens. Thanks to (tyrannosauraus-becks
+)[https://github.com/tyrannosaurus-becks], who suggests to add this
+policy to the github users that we have previously created:</p>
+<p>path &ldquo;auth/token/create&rdquo; {
+capabilities = [&ldquo;create&rdquo;, &ldquo;read&rdquo;, &ldquo;update&rdquo;, &ldquo;delete&rdquo;, &ldquo;list&rdquo;]
+}</p>
+<p>Huh, look at that, it worked.
+It&rsquo;s nice when things work the first time! Now to rid our repos of
+secrets!</p>
+
+      </article>
+
+      
+      <span class="f6 gray mv3" title="Lastmod: June 1, 2020. Published at: 2020-06-01.">
+        
+      </span>
+
+      
+        <section class="mt4">
+          
+          
+          <h3>👋 Related posts in the <a href="/series/secret-mangement" class="b bb bw1 pb1 no-underline black">secret mangement</a> series...</h3>
+      
+          
+         
+          
+            <ul class="list pl0">
+              
+                <li class="list pl0 lh-copy">
+                  <a
+                    class="f4 b dib black no-underline"
+                    href="https://tdonovic.github.io/post/secret-management-terraform-vault/"
+                    >secret management, terraform, vault</a
+                  >
+                  <span class="f6 gray">May 26, 2020</span>
+                </li>
+              
+            </ul>  
+          
+        </section>
+      
+
+  </section>
+
+  <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        © 2020 tomas donovic
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>

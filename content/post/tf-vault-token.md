@@ -5,7 +5,7 @@ title = "secret management, terraform, vault"
 series = "secret mangement"
 +++
 
-Storing secrets in git is bad. Github even has [automated secret
+Storing secrets in git is bad. Github even has ([automated secret
 scanning)[https://help.github.com/en/github/administering-a-repository/about-secret-scanning]
 to try and combat this. The worst bit is having years of security debt,
 like secrets in git, and needing to put them somewhere more secure. This

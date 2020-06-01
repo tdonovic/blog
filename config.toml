@@ -24,15 +24,18 @@ description = "discoveries along the way"
   name = "blog"
   url = "post/"
 
-#[[params.menu]]
-#  name = "post series"
-#  url = "series/"
+[[params.menu]]
+  name = "post series"
+  url = "series/"
 
 
 [[params.menu]]
   name = "about"
   url = "about/"
-  
+
+[[params.menu]]
+  name = "thesis"
+  url = "thesis/"
 
 [privacy]
   [privacy.googleAnalytics]

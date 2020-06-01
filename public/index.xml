@@ -7,10 +7,30 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-au</language>
     <copyright>© 2020 tomas donovic</copyright>
-    <lastBuildDate>Tue, 26 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://tdonovic.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>thesis</title>
+      <link>https://tdonovic.github.io/thesis/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://tdonovic.github.io/thesis/</guid>
+      <description>abstract Blockchain systems have been used widely to make processes that otherwise required large amounts of trust (movement of funds, etc.), trustless. Permissioned blockchains have meant that decentralisation can be applied to an extended set of use cases. Data quality analysis, a previously centralised process, can now be performed in a decentralised setting. This project implements a decentralised blockchain system to analyse data quality. The system implemented is far slower than a centralised solution.</description>
+    </item>
+    
+    <item>
+      <title>vault child tokens</title>
+      <link>https://tdonovic.github.io/post/vault-child-tokens/</link>
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +1000</pubDate>
+      
+      <guid>https://tdonovic.github.io/post/vault-child-tokens/</guid>
+      <description>To continue from last time: we need to create some vault policy to allow terraform to create child tokens. Thanks to (tyrannosauraus-becks )[https://github.com/tyrannosaurus-becks], who suggests to add this policy to the github users that we have previously created:
+path &amp;ldquo;auth/token/create&amp;rdquo; { capabilities = [&amp;ldquo;create&amp;rdquo;, &amp;ldquo;read&amp;rdquo;, &amp;ldquo;update&amp;rdquo;, &amp;ldquo;delete&amp;rdquo;, &amp;ldquo;list&amp;rdquo;] }
+Huh, look at that, it worked. It&amp;rsquo;s nice when things work the first time! Now to rid our repos of secrets!</description>
+    </item>
     
     <item>
       <title>About tdonovic</title>
@@ -39,7 +59,7 @@ This post definitely fits firmly into the second one. In a lot of cases, develop
       <pubDate>Tue, 26 May 2020 00:00:00 +1000</pubDate>
       
       <guid>https://tdonovic.github.io/post/secret-management-terraform-vault/</guid>
-      <description>Storing secrets in git is bad. Github even has [automated secret scanning)[https://help.github.com/en/github/administering-a-repository/about-secret-scanning] to try and combat this. The worst bit is having years of security debt, like secrets in git, and needing to put them somewhere more secure. This post details some of the trials we have gone through to fix this issue, as well as our approach and why we think it was a good way to go.
+      <description>Storing secrets in git is bad. Github even has ([automated secret scanning)[https://help.github.com/en/github/administering-a-repository/about-secret-scanning] to try and combat this. The worst bit is having years of security debt, like secrets in git, and needing to put them somewhere more secure. This post details some of the trials we have gone through to fix this issue, as well as our approach and why we think it was a good way to go.
 iac infrastructure as code is the standard way to deploy infrastructure, since it&amp;rsquo;s repeatable, clean, and can be source controlled.</description>
     </item>
     
