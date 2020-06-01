@@ -18,9 +18,7 @@
       <pubDate>Mon, 01 Jun 2020 00:00:00 +1000</pubDate>
       
       <guid>https://tdonovic.github.io/post/vault-child-tokens/</guid>
-      <description>To continue from last time: we need to create some vault policy to allow terraform to create child tokens. Thanks to (tyrannosauraus-becks )[https://github.com/tyrannosaurus-becks], who suggests to add this policy to the github users that we have previously created:
-path &amp;ldquo;auth/token/create&amp;rdquo; { capabilities = [&amp;ldquo;create&amp;rdquo;, &amp;ldquo;read&amp;rdquo;, &amp;ldquo;update&amp;rdquo;, &amp;ldquo;delete&amp;rdquo;, &amp;ldquo;list&amp;rdquo;] }
-Huh, look at that, it worked. It&amp;rsquo;s nice when things work the first time! Now to rid our repos of secrets!</description>
+      <description>To continue from last time: we need to create some vault policy to allow terraform to create child tokens. Thanks to (tyrannosauraus-becks )[https://github.com/tyrannosaurus-becks], who suggests to add this policy to the github users that we have previously created: path &amp;#34;auth/token/create&amp;#34; { capabilities = [&amp;#34;create&amp;#34;, &amp;#34;read&amp;#34;, &amp;#34;update&amp;#34;, &amp;#34;delete&amp;#34;, &amp;#34;list&amp;#34;] } Huh, look at that, it worked. It&amp;rsquo;s nice when things work the first time! Now to rid our repos of secrets!</description>
     </item>
     
     <item>

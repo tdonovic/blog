@@ -46,3 +46,15 @@ description = "discoveries along the way"
     enableDNT = true
   [privacy.youtube]
     privacyEnhanced = true
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    hl_Lines = ""
+    lineNoStart = 0
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    style = "pastie"
+    tabWidth = 4

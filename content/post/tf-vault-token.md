@@ -54,9 +54,12 @@ get reading and find some solution then.
 # a child, non-root, token. for your health
 So, a child token. At first inspection, yes, you can absolutely do
 this. Just need to proivide the following policy to that entity:
+
+{{< highlight go >}}
   path "auth/token/create" {
   capabilities = ["create", "update"]
   }
+{{< / highlight >}}
 But does that mean that the new, child, token, will be able to do
 whatever it wants? No, `vault` has a nice inheritance model, so it won't
 give child tokens more permission than their parents.

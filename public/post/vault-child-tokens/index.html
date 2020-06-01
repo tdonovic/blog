@@ -43,9 +43,7 @@
 />
 <meta
   name="twitter:description"
-  content="To continue from last time: we need to create some vault policy to allow terraform to create child tokens. Thanks to (tyrannosauraus-becks )[https://github.com/tyrannosaurus-becks], who suggests to add this policy to the github users that we have previously created:
-path &ldquo;auth/token/create&rdquo; { capabilities = [&ldquo;create&rdquo;, &ldquo;read&rdquo;, &ldquo;update&rdquo;, &ldquo;delete&rdquo;, &ldquo;list&rdquo;] }
-Huh, look at that, it worked. It&rsquo;s nice when things work the first time! Now to rid our repos of secrets!|"
+  content="To continue from last time: we need to create some vault policy to allow terraform to create child tokens. Thanks to (tyrannosauraus-becks )[https://github.com/tyrannosaurus-becks], who suggests to add this policy to the github users that we have previously created: path &#34;auth/token/create&#34; { capabilities = [&#34;create&#34;, &#34;read&#34;, &#34;update&#34;, &#34;delete&#34;, &#34;list&#34;] } Huh, look at that, it worked. It&rsquo;s nice when things work the first time! Now to rid our repos of secrets!|"
 />
 <meta name="twitter:image:src" content="" />
 <meta name="twitter:domain" content="https://tdonovic.github.io/post/vault-child-tokens/" />
@@ -116,11 +114,11 @@ if (!doNotTrack) {
         <p>To continue from last time: we need to create some vault policy to allow
 terraform to create child tokens. Thanks to (tyrannosauraus-becks
 )[https://github.com/tyrannosaurus-becks], who suggests to add this
-policy to the github users that we have previously created:</p>
-<p>path &ldquo;auth/token/create&rdquo; {
-capabilities = [&ldquo;create&rdquo;, &ldquo;read&rdquo;, &ldquo;update&rdquo;, &ldquo;delete&rdquo;, &ldquo;list&rdquo;]
-}</p>
-<p>Huh, look at that, it worked.
+policy to the github users that we have previously created:
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">  path <span style="color:#d20;background-color:#fff0f0">&#34;auth/token/create&#34;</span> {
+    capabilities = [<span style="color:#d20;background-color:#fff0f0">&#34;create&#34;</span>, <span style="color:#d20;background-color:#fff0f0">&#34;read&#34;</span>, <span style="color:#d20;background-color:#fff0f0">&#34;update&#34;</span>, <span style="color:#d20;background-color:#fff0f0">&#34;delete&#34;</span>, <span style="color:#d20;background-color:#fff0f0">&#34;list&#34;</span>]
+  }</code></pre></div>
+Huh, look at that, it worked.
 It&rsquo;s nice when things work the first time! Now to rid our repos of
 secrets!</p>
 
