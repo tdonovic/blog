@@ -7,18 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-au</language>
     <copyright>© 2020 tomas donovic</copyright>
-    <lastBuildDate>Mon, 01 Jun 2020 00:00:00 +1000</lastBuildDate>
-    
-	<atom:link href="https://tdonovic.github.io/series/secret-mangement/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 01 Jun 2020 00:00:00 +1000</lastBuildDate><atom:link href="https://tdonovic.github.io/series/secret-mangement/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>vault child tokens</title>
       <link>https://tdonovic.github.io/post/vault-child-tokens/</link>
       <pubDate>Mon, 01 Jun 2020 00:00:00 +1000</pubDate>
       
       <guid>https://tdonovic.github.io/post/vault-child-tokens/</guid>
-      <description>To continue from last time: we need to create some vault policy to allow terraform to create child tokens. Thanks to (tyrannosauraus-becks )[https://github.com/tyrannosaurus-becks], who suggests to add this policy to the github users that we have previously created: path &amp;#34;auth/token/create&amp;#34; { capabilities = [&amp;#34;create&amp;#34;, &amp;#34;read&amp;#34;, &amp;#34;update&amp;#34;, &amp;#34;delete&amp;#34;, &amp;#34;list&amp;#34;] } Huh, look at that, it worked. It&amp;rsquo;s nice when things work the first time! Now to rid our repos of secrets!</description>
+      <description>To continue from last time: we need to create some vault policy to allow terraform to create child tokens. Thanks to (tyrannosauraus-becks )[https://github.com/tyrannosaurus-becks], who suggests to add this policy to the github users that we have previously created: path &amp;#34;auth/token/create&amp;#34; { capabilities = [&amp;#34;create&amp;#34;, &amp;#34;read&amp;#34;, &amp;#34;update&amp;#34;, &amp;#34;delete&amp;#34;, &amp;#34;list&amp;#34;] }  Huh, look at that, it worked. It&amp;rsquo;s nice when things work the first time! Now to rid our repos of secrets!</description>
     </item>
     
     <item>

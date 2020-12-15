@@ -28,3 +28,10 @@ code {
   -webkit-font-smoothings: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+img[src$='#center'] {
+  display: block;
+  margin: 1.0rem auto;
+  max-width: 50%;
+  height: auto;
+}

@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-au</language>
     <copyright>© 2020 tomas donovic</copyright>
-    <lastBuildDate>Tue, 26 May 2020 00:00:00 +1000</lastBuildDate>
-    
-	<atom:link href="https://tdonovic.github.io/series/platform-automation/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 26 May 2020 00:00:00 +1000</lastBuildDate><atom:link href="https://tdonovic.github.io/series/platform-automation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>painless &amp; safe auto DB lifecycle</title>
       <link>https://tdonovic.github.io/post/painless-safe-auto-db-lifecycle/</link>
