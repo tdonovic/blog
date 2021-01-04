@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-au</language>
     <copyright>© 2020 tomas donovic</copyright>
-    <lastBuildDate>Tue, 15 Dec 2020 00:00:00 +1100</lastBuildDate><atom:link href="https://tdonovic.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Jan 2021 00:00:00 +1100</lastBuildDate><atom:link href="https://tdonovic.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>csvkit for schema inference</title>
+      <link>https://tdonovic.github.io/post/csvkit-for-schema-inference/</link>
+      <pubDate>Tue, 05 Jan 2021 00:00:00 +1100</pubDate>
+      
+      <guid>https://tdonovic.github.io/post/csvkit-for-schema-inference/</guid>
+      <description>Let&amp;rsquo;s say you use some db management tool like alembic or flyway, and you need to import some data into your db, as well as its schema, but you need to generate all the sql statements for this, so they can be comitted to git. On first inspection, sounded like I was going to have to write some gross python. Instead, a tool called csvkit can do this for you, nearly trivially.</description>
+    </item>
+    
     <item>
       <title>apple watch PAM</title>
       <link>https://tdonovic.github.io/post/apple-watch-pam/</link>
