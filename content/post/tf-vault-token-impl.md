@@ -2,7 +2,6 @@
 author = "tdonovic"
 date = 2020-06-01
 title = "vault child tokens"
-series = "secret management"
 +++
 
 To continue from last time: we need to create some vault policy to allow

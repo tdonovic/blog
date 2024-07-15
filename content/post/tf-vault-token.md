@@ -2,7 +2,6 @@
 author = "tdonovic"
 date = 2020-05-26
 title = "secret management, terraform, vault"
-series = "secret management"
 +++
 
 Storing secrets in git is bad. Github even has ([automated secret

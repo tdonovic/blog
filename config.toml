@@ -4,7 +4,7 @@ theme ="hugo-theme-basic"
 languageCode = "en-au"
 googleAnalytics = "UA-XXXXXXXXX-X"
 enableEmoji = true
-copyright = "© 2020 tomas donovic"
+copyright = "© 2024 tomas donovic"
 description = "discoveries along the way"
 
 [taxonomies]
@@ -23,11 +23,6 @@ description = "discoveries along the way"
 [[params.menu]]
   name = "blog"
   url = "post/"
-
-[[params.menu]]
-  name = "post series"
-  url = "series/"
-
 
 [[params.menu]]
   name = "about"
