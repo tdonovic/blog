@@ -3,7 +3,7 @@ author = "tdonovic"
 date = 2020-12-15
 title = "apple watch PAM"
 +++
-I noticed the ~weirdest~ coolest thing when using an older (non-touch id) mac with my Apple Watch. When I had to authenticate to, for example, allow `sshfs` to run, I got prompted to double tap the button on my Apple Watch, in much the same manner as if you are authenticating to use it for Apple Pay. This then unlocked the gear icon thing, and I could run `sshfs`. 
+I noticed the ~weirdest~ coolest thing when using an older (non-touch id) mac with my Apple Watch. When I had to authenticate to, for example, allow `sshfs` to run, I got prompted to double tap the button on my Apple Watch, in much the same manner as if you are authenticating to use it for Apple Pay. This then unlocked the gear icon thing, and I could run `sshfs`.
 
 ![watch prompt](watch_prompt.png#center)
 
@@ -16,4 +16,3 @@ PAM (Pluggable Authentication Modules) are a means of proving your identity to t
 
 ## pam-watchid
 Thanks to [biscutehh's pam-watchid](https://github.com/biscuitehh/pam-watchid) project, a fork from [Reflejo's pam-touchID](https://github.com/Reflejo/pam-touchID), all you need to do is clone the repo, `make install` and modify your `/etc/pam.d/sudo` file. Then you can use Watch to sudo! I presume this will also work with TouchID with the other project, although I was unable to test, since my Mac is too old.
-

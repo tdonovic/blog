@@ -43,7 +43,7 @@
 />
 <meta
   name="twitter:description"
-  content="Let&rsquo;s say you use some db management tool like alembic or flyway, and you need to import some data into your db, as well as its schema, but you need to generate all the sql statements for this, so they can be comitted to git. On first inspection, sounded like I was going to have to write some gross python. Instead, a tool called csvkit can do this for you, nearly trivially.|"
+  content="Let&rsquo;s say you use some db management tool like alembic or flyway, and you need to import some data into your db, as well as its schema, but you need to generate all the sql statements for this, so they can be committed to git. On first inspection, sounded like I was going to have to write some gross python. Instead, a tool called csvkit can do this for you, nearly trivially.|"
 />
 <meta name="twitter:image:src" content="" />
 <meta name="twitter:domain" content="https://tdonovic.github.io/post/csvkit-for-schema-inference/" />
@@ -100,7 +100,7 @@ if (!doNotTrack) {
   itemscope
   itemtype="http://schema.org/Article"
 >
-  
+
   <span class="b">/ </span>
   <a href="https://tdonovic.github.io/" class="b bb bw1 pb1 no-underline black">tdonovic</a>
   <span class="b"> / </span>
@@ -111,7 +111,7 @@ if (!doNotTrack) {
     <span class="f6 gray">January 5, 2021</span>
 
       <article itemprop="articleBody" id="content" class="w-90 lh-copy">
-        <p>Let&rsquo;s say you use some db management tool like <code>alembic</code> or <code>flyway</code>, and you need to import some data into your db, as well as its schema, but you need to generate all the <code>sql</code> statements for this, so they can be comitted to git. On first inspection, sounded like I was going to have to write some gross python. Instead, a tool called <code>csvkit</code> can do this for you, nearly trivially.</p>
+        <p>Let&rsquo;s say you use some db management tool like <code>alembic</code> or <code>flyway</code>, and you need to import some data into your db, as well as its schema, but you need to generate all the <code>sql</code> statements for this, so they can be committed to git. On first inspection, sounded like I was going to have to write some gross python. Instead, a tool called <code>csvkit</code> can do this for you, nearly trivially.</p>
 <ol>
 <li>
 <p>Install <code>csvkit</code>
@@ -127,17 +127,17 @@ echo &ldquo;.dump&rdquo; | sqlite3 test.db &gt; test.sql</p>
 </li>
 </ol>
 <p>As long as the inserts are compatible with your DB, this should work trivially. If they don&rsquo;t, you probably have a bit of <code>sed</code> to massage it into the correct format.
-<code>csvsql</code> supports writing directly to db, and will generate the correct statments for your particular db flavour, but it will not output this directly, it must be connected directly to the db.</p>
-<p>Upon further inspection, this doesn&rsquo;t look like it will work directly, and some <code>sed</code>&lsquo;ing will need to be done to make this work. So instead, I use the method described in <a href="https://stackoverflow.com/questions/18671/quick-easy-way-to-migrate-sqlite3-to-mysql">here</a> where <a href="https://stackoverflow.com/questions/1067060/translating-perl-to-python">Alex Martelli</a> did something simmilar.</p>
+<code>csvsql</code> supports writing directly to db, and will generate the correct statements for your particular db flavour, but it will not output this directly, it must be connected directly to the db.</p>
+<p>Upon further inspection, this doesn&rsquo;t look like it will work directly, and some <code>sed</code>&lsquo;ing will need to be done to make this work. So instead, I use the method described in <a href="https://stackoverflow.com/questions/18671/quick-easy-way-to-migrate-sqlite3-to-mysql">here</a> where <a href="https://stackoverflow.com/questions/1067060/translating-perl-to-python">Alex Martelli</a> did something similar.</p>
 
       </article>
 
-      
+
       <span class="f6 gray mv3" title="Lastmod: January 5, 2021. Published at: 2021-01-05.">
-        
+
       </span>
 
-      
+
 
   </section>
 
@@ -148,7 +148,7 @@ echo &ldquo;.dump&rdquo; | sqlite3 test.db &gt; test.sql</p>
       </p>
     </div>
   </footer>
-  
+
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
 
 <script>

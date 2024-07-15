@@ -4,77 +4,66 @@
     <title>tdonovic</title>
     <link>https://tdonovic.github.io/</link>
     <description>Recent content on tdonovic</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-au</language>
     <copyright>© 2020 tomas donovic</copyright>
-    <lastBuildDate>Tue, 05 Jan 2021 00:00:00 +1100</lastBuildDate><atom:link href="https://tdonovic.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 15 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://tdonovic.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About tdonovic</title>
+      <link>https://tdonovic.github.io/about/</link>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://tdonovic.github.io/about/</guid>
+      <description>Hi! I manage a team of engineers, out of Sydney, Australia. I solve problems, sometimes using computers, sometimes by talking to people, usually somewhere imbetween.&#xA;I&amp;rsquo;m not at work all the time though! I also like cycling, motorcycling, taking photos, and generally tinkering.&#xA;Try me on LinkedIn, or Instagram. It&amp;rsquo;s not hard to find me.</description>
+    </item>
+    <item>
+      <title>on air travel in australia with a bicycle</title>
+      <link>https://tdonovic.github.io/post/on-air-travel-in-australia-with-a-bicycle/</link>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://tdonovic.github.io/post/on-air-travel-in-australia-with-a-bicycle/</guid>
+      <description>Airlines in Australia are painful. There&amp;rsquo;s expensive (2x price) but nearly full service (Qantas), theres cheap but painful and everything is extra (1x price, Jetstar), theres not so cheap and everything is extra (1.2x, Virgin). But what if I told you there is a 4th option that&amp;rsquo;s both a viable, profitable airline (cya later Bonza), not expensive (1.2x) and lets you bring whatever shape luggage you want, as long as it weighs less than whatever you paid for?</description>
+    </item>
     <item>
       <title>csvkit for schema inference</title>
       <link>https://tdonovic.github.io/post/csvkit-for-schema-inference/</link>
-      <pubDate>Tue, 05 Jan 2021 00:00:00 +1100</pubDate>
-      
+      <pubDate>Tue, 05 Jan 2021 00:00:00 +0000</pubDate>
       <guid>https://tdonovic.github.io/post/csvkit-for-schema-inference/</guid>
-      <description>Let&amp;rsquo;s say you use some db management tool like alembic or flyway, and you need to import some data into your db, as well as its schema, but you need to generate all the sql statements for this, so they can be comitted to git. On first inspection, sounded like I was going to have to write some gross python. Instead, a tool called csvkit can do this for you, nearly trivially.</description>
+      <description>Let&amp;rsquo;s say you use some db management tool like alembic or flyway, and you need to import some data into your db, as well as its schema, but you need to generate all the sql statements for this, so they can be committed to git. On first inspection, sounded like I was going to have to write some gross python. Instead, a tool called csvkit can do this for you, nearly trivially.</description>
     </item>
-    
     <item>
       <title>apple watch PAM</title>
       <link>https://tdonovic.github.io/post/apple-watch-pam/</link>
-      <pubDate>Tue, 15 Dec 2020 00:00:00 +1100</pubDate>
-      
+      <pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate>
       <guid>https://tdonovic.github.io/post/apple-watch-pam/</guid>
-      <description>I noticed the ~weirdest~ coolest thing when using an older (non-touch id) mac with my Apple Watch. When I had to authenticate to, for example, allow sshfs to run, I got prompted to double tap the button on my Apple Watch, in much the same manner as if you are authenticating to use it for Apple Pay. This then unlocked the gear icon thing, and I could run sshfs.
-This got my thinking, however, is there some way to make it when I run sudo that I just get a watch prompt instead?</description>
+      <description>I noticed the weirdest coolest thing when using an older (non-touch id) mac with my Apple Watch. When I had to authenticate to, for example, allow sshfs to run, I got prompted to double tap the button on my Apple Watch, in much the same manner as if you are authenticating to use it for Apple Pay. This then unlocked the gear icon thing, and I could run sshfs.&#xA;This got my thinking, however, is there some way to make it when I run sudo that I just get a watch prompt instead?</description>
     </item>
-    
     <item>
       <title>thesis</title>
       <link>https://tdonovic.github.io/thesis/</link>
       <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://tdonovic.github.io/thesis/</guid>
       <description>abstract Blockchain systems have been used widely to make processes that otherwise required large amounts of trust (movement of funds, etc.), trustless. Permissioned blockchains have meant that decentralisation can be applied to an extended set of use cases. Data quality analysis, a previously centralised process, can now be performed in a decentralised setting. This project implements a decentralised blockchain system to analyse data quality. The system implemented is far slower than a centralised solution.</description>
     </item>
-    
     <item>
       <title>vault child tokens</title>
       <link>https://tdonovic.github.io/post/vault-child-tokens/</link>
-      <pubDate>Mon, 01 Jun 2020 00:00:00 +1000</pubDate>
-      
+      <pubDate>Mon, 01 Jun 2020 00:00:00 +0000</pubDate>
       <guid>https://tdonovic.github.io/post/vault-child-tokens/</guid>
-      <description>To continue from last time: we need to create some vault policy to allow terraform to create child tokens. Thanks to (tyrannosauraus-becks )[https://github.com/tyrannosaurus-becks], who suggests to add this policy to the github users that we have previously created: path &amp;#34;auth/token/create&amp;#34; { capabilities = [&amp;#34;create&amp;#34;, &amp;#34;read&amp;#34;, &amp;#34;update&amp;#34;, &amp;#34;delete&amp;#34;, &amp;#34;list&amp;#34;] }  Huh, look at that, it worked. It&amp;rsquo;s nice when things work the first time! Now to rid our repos of secrets!</description>
+      <description>To continue from last time: we need to create some vault policy to allow terraform to create child tokens. Thanks to (tyrannosauraus-becks )[https://github.com/tyrannosaurus-becks], who suggests to add this policy to the github users that we have previously created: path &amp;#34;auth/token/create&amp;#34; { capabilities = [&amp;#34;create&amp;#34;, &amp;#34;read&amp;#34;, &amp;#34;update&amp;#34;, &amp;#34;delete&amp;#34;, &amp;#34;list&amp;#34;] } Huh, look at that, it worked. It&amp;rsquo;s nice when things work the first time! Now to rid our repos of secrets!</description>
     </item>
-    
-    <item>
-      <title>About tdonovic</title>
-      <link>https://tdonovic.github.io/about/</link>
-      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://tdonovic.github.io/about/</guid>
-      <description>Hi! I am a DevOps Engineer, out of Sydney, Australia. When I&amp;rsquo;m at work, I like to automate things with Vault and Terraform, Shell and Python. Ususally I&amp;rsquo;m automating something AWS related.
-I&amp;rsquo;m not at work all the time though! I also like cycling, motorcycling, e-boarding &amp;amp; lao gan ma.
-Still getting email sorted, but try me on LinkedIn, or Instagram. It&amp;rsquo;s not hard to find me.</description>
-    </item>
-    
     <item>
       <title>painless &amp; safe auto DB lifecycle</title>
       <link>https://tdonovic.github.io/post/painless-safe-auto-db-lifecycle/</link>
-      <pubDate>Tue, 26 May 2020 00:00:00 +1000</pubDate>
-      
+      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
       <guid>https://tdonovic.github.io/post/painless-safe-auto-db-lifecycle/</guid>
-      <description>DevOps engineer is a bit of a misnomer. Really, it should be broken into two main functions: platform engineering and platform automation. Platform engineering being &amp;ldquo;get k8s running so they can deploy their workload&amp;rdquo;, and platform automation being &amp;ldquo;magic up a way we don&amp;rsquo;t need to manually provision environments any more&amp;rdquo;.
-This post definitely fits firmly into the second one. In a lot of cases, developers have access to modify AWS, to the build system, create repos.</description>
+      <description>DevOps engineer is a bit of a misnomer. Really, it should be broken into two main functions: platform engineering and platform automation. Platform engineering being &amp;ldquo;get k8s running so they can deploy their workload&amp;rdquo;, and platform automation being &amp;ldquo;magic up a way we don&amp;rsquo;t need to manually provision environments any more&amp;rdquo;.&#xA;This post definitely fits firmly into the second one. In a lot of cases, developers have access to modify AWS, to the build system, create repos.</description>
     </item>
-    
     <item>
       <title>secret management, terraform, vault</title>
       <link>https://tdonovic.github.io/post/secret-management-terraform-vault/</link>
-      <pubDate>Tue, 26 May 2020 00:00:00 +1000</pubDate>
-      
+      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
       <guid>https://tdonovic.github.io/post/secret-management-terraform-vault/</guid>
-      <description>Storing secrets in git is bad. Github even has ([automated secret scanning)[https://help.github.com/en/github/administering-a-repository/about-secret-scanning] to try and combat this. The worst bit is having years of security debt, like secrets in git, and needing to put them somewhere more secure. This post details some of the trials we have gone through to fix this issue, as well as our approach and why we think it was a good way to go.
-iac infrastructure as code is the standard way to deploy infrastructure, since it&amp;rsquo;s repeatable, clean, and can be source controlled.</description>
+      <description>Storing secrets in git is bad. Github even has ([automated secret scanning)[https://help.github.com/en/github/administering-a-repository/about-secret-scanning] to try and combat this. The worst bit is having years of security debt, like secrets in git, and needing to put them somewhere more secure. This post details some of the trials we have gone through to fix this issue, as well as our approach and why we think it was a good way to go.&#xA;iac infrastructure as code is the standard way to deploy infrastructure, since it&amp;rsquo;s repeatable, clean, and can be source controlled.</description>
     </item>
-    
   </channel>
 </rss>

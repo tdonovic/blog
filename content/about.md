@@ -1,12 +1,11 @@
 +++
 title = "About tdonovic"
-date = "2020-05-26"
+date = "2024-06-15"
 +++
 
-Hi! I am a DevOps Engineer, out of Sydney, Australia.
-When I'm at work, I like to automate things with Vault and Terraform, Shell and Python. Ususally I'm automating something AWS related.
+Hi! I manage a team of engineers, out of Sydney, Australia. I solve problems, sometimes using computers, sometimes by talking to people, usually somewhere imbetween.
 
 I'm not at work all the time though!
-I also like cycling, motorcycling, e-boarding & lao gan ma.
+I also like cycling, motorcycling, taking photos, and generally tinkering.
 
-Still getting email sorted, but try me on LinkedIn, or Instagram. It's not hard to find me.
+Try me on LinkedIn, or Instagram. It's not hard to find me.

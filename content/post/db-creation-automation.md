@@ -13,7 +13,7 @@ to manually provision environments any more".
 
 This post definitely fits firmly into the second one. In a lot of cases,
 developers have access to modify AWS, to the build system, create repos.
-In our case, and maybe more broadly, there isn't an obious, automated,
+In our case, and maybe more broadly, there isn't an obvious, automated,
 RBAC'ed way to create and destroy DBs, especially for ephemeral
 environments.
 
@@ -36,14 +36,14 @@ Broadly, an application auths with vault via iam credentials, or a service accou
 ## so how does this actually work then?
 
 ![flow diagram](diag.png)
-In this case, when an init container for some service starts, we connect to Vault, and retrieve our MySQL credentials. Then, the init container will create an empty database with the service name, create new, lower powered credentials (that don’t allow creation/deletion of DBs) and dump the credentials the actual service should run with into the environment of the service. 
+In this case, when an init container for some service starts, we connect to Vault, and retrieve our MySQL credentials. Then, the init container will create an empty database with the service name, create new, lower powered credentials (that don’t allow creation/deletion of DBs) and dump the credentials the actual service should run with into the environment of the service.
 
 If the database already exists, the service will simply pass the low strength credentials through to the service starting.
 
 ## does it get even better?
 
 It certainly does!
-Since we have an init container doing the heavy lifting for actually provisioning  the database, we can do some extra things. For example, another feature that is barely discussed, but would be much appreciated is automated database restoration, ie. taking a snapshot from some other environment and restoring to this new one. 
+Since we have an init container doing the heavy lifting for actually provisioning  the database, we can do some extra things. For example, another feature that is barely discussed, but would be much appreciated is automated database restoration, ie. taking a snapshot from some other environment and restoring to this new one.
 By just including a bkp identifier to their helm chart, a dev can have a
 backup restored on the first start of their system. Great, now the
 environment is even more ephemeral. All can be recreated and blown away
@@ -54,4 +54,4 @@ Database cleanup, for no longer needed, old, cruddy, useless databases would nee
 # the end?
 `vault` is a super cool way to go to solve this problem, along with
 `init` and `delete` hooks in `helm`. The next installment of this series
-will be some more implementation details about how we went! 
+will be some more implementation details about how we went!

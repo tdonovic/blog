@@ -2,7 +2,7 @@
 author = "tdonovic"
 date = 2020-05-26
 title = "secret management, terraform, vault"
-series = "secret mangement"
+series = "secret management"
 +++
 
 Storing secrets in git is bad. Github even has ([automated secret
@@ -43,8 +43,8 @@ the repo to start.
 
 But this is confusing, since everyone I talked to said you need to use
 the root token, because `terraform` does unnatural things with it, like
-generatign a child token with it. It's scary when you start looking,
-start seeing github issues with titles like ["Cannot craete child token
+generating a child token with it. It's scary when you start looking,
+start seeing github issues with titles like ["Cannot create child token
 without root
 privileges"](https://github.com/terraform-providers/terraform-provider-vault/issues/368)
 or ["provider is unable to access data without a non-root
@@ -77,11 +77,11 @@ place? Great, it's not root, but we still need to store it somewhere
 # github auth, sso magic, token helper
 To do anything in `vault`, you need to auth. This can be done by `vault
 login`, which, irrespective of the auth method, returns a token that is
-actually used to do *stuff* in `vault`. 
+actually used to do *stuff* in `vault`.
 Great, so what?
 Lets just use this token instead of some static token for our
 `terraform`. Even better, `vault` stores it in its token helper,
-which terraform can also use. Lets go one step futher, and use github as our auth method
+which terraform can also use. Lets go one step further, and use github as our auth method
 for logging in, rather than with some generic iam role. Great, now we
 have audit on who got access to `vault` and made a bunch of changes.
 

@@ -12,4 +12,3 @@ However, due to it’s nature of being a decentralised solution offers privacy, 
 guarantees, and much lower trust of third parties to use than a centralised solution.
 
 [download it here](/thesis/tdonovic_thesis.pdf)
- 

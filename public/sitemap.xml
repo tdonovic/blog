@@ -1,73 +1,48 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <url>
-    <loc>https://tdonovic.github.io/post/csvkit-for-schema-inference/</loc>
-    <lastmod>2021-01-05T00:00:00+11:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tdonovic.github.io/post/</loc>
-    <lastmod>2021-01-05T00:00:00+11:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tdonovic.github.io/</loc>
-    <lastmod>2021-01-05T00:00:00+11:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tdonovic.github.io/post/apple-watch-pam/</loc>
-    <lastmod>2020-12-15T00:00:00+11:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tdonovic.github.io/thesis/</loc>
-    <lastmod>2020-06-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tdonovic.github.io/series/secret-mangement/</loc>
-    <lastmod>2020-06-01T00:00:00+10:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tdonovic.github.io/series/</loc>
-    <lastmod>2020-06-01T00:00:00+10:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://tdonovic.github.io/post/vault-child-tokens/</loc>
-    <lastmod>2020-06-01T00:00:00+10:00</lastmod>
-  </url>
-  
   <url>
     <loc>https://tdonovic.github.io/about/</loc>
-    <lastmod>2020-05-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2024-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tdonovic.github.io/post/on-air-travel-in-australia-with-a-bicycle/</loc>
+    <lastmod>2024-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tdonovic.github.io/post/</loc>
+    <lastmod>2024-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tdonovic.github.io/</loc>
+    <lastmod>2024-06-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tdonovic.github.io/post/csvkit-for-schema-inference/</loc>
+    <lastmod>2021-01-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tdonovic.github.io/post/apple-watch-pam/</loc>
+    <lastmod>2020-12-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tdonovic.github.io/series/secret-management/</loc>
+    <lastmod>2020-06-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tdonovic.github.io/series/</loc>
+    <lastmod>2020-06-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tdonovic.github.io/thesis/</loc>
+    <lastmod>2020-06-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://tdonovic.github.io/post/vault-child-tokens/</loc>
+    <lastmod>2020-06-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://tdonovic.github.io/post/painless-safe-auto-db-lifecycle/</loc>
-    <lastmod>2020-05-26T00:00:00+10:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2020-05-26T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://tdonovic.github.io/series/platform-automation/</loc>
-    <lastmod>2020-05-26T00:00:00+10:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2020-05-26T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://tdonovic.github.io/post/secret-management-terraform-vault/</loc>
-    <lastmod>2020-05-26T00:00:00+10:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2020-05-26T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://tdonovic.github.io/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://tdonovic.github.io/tags/</loc>
   </url>
-  
 </urlset>

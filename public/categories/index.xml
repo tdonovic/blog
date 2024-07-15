@@ -4,8 +4,9 @@
     <title>Categories on tdonovic</title>
     <link>https://tdonovic.github.io/categories/</link>
     <description>Recent content in Categories on tdonovic</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-au</language>
-    <copyright>© 2020 tomas donovic</copyright><atom:link href="https://tdonovic.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2020 tomas donovic</copyright>
+    <atom:link href="https://tdonovic.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
