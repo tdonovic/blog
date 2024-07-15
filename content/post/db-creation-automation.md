@@ -2,7 +2,6 @@
 author = "tdonovic"
 date = 2020-05-26
 title = "painless & safe auto DB lifecycle"
-series = "platform automation"
 +++
 
 DevOps engineer is a bit of a misnomer. Really, it should be broken into

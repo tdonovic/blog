@@ -7,14 +7,6 @@
     <generator>Hugo</generator>
     <language>en-au</language>
     <copyright>© 2024 tomas donovic</copyright>
-    <lastBuildDate>Tue, 26 May 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://tdonovic.github.io/series/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Platform Automation</title>
-      <link>https://tdonovic.github.io/series/platform-automation/</link>
-      <pubDate>Tue, 26 May 2020 00:00:00 +0000</pubDate>
-      <guid>https://tdonovic.github.io/series/platform-automation/</guid>
-      <description></description>
-    </item>
   </channel>
 </rss>
